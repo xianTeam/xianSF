@@ -6,11 +6,12 @@
  * @example
  *  { tracking_type: 1, tracking_number: '444003077898' }
  */
-
+import xml2js from 'xml2js';
+import request from 'request';
 import Common from './common';
 import Config from '../config';
+
 const queryString = require('query-string');
-import request from 'request';
 
 export default class OrderTrace extends Common {
     // super props
@@ -63,12 +64,14 @@ export default class OrderTrace extends Common {
                 if(err) {
                     reject(err);
                 } else {
-                    try {
-                        resolve(body);
-                    }
-                    catch(error) {
-                        reject(error);
-                    }
+                    const parser = new xml2js.Parser({ trim: true, explicitArray: false, explicitRoot: false });
+                    parser.parseString(body, (error, result) => {
+                        if (!err) {
+                            resolve(result);
+                        } else {
+                            reject(error);
+                        }
+                    });
                 }
             });
         });

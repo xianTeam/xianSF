@@ -1,6 +1,7 @@
 import Common from './common';
 import request from 'request';
 import config from '../config';
+import xml2js from 'xml2js';
 
 const queryString = require('query-string');
 
@@ -103,12 +104,14 @@ export default class PushOrder extends Common {
                 if(err) {
                     reject(err);
                 } else {
-                    try {
-                        resolve(body);
-                    }
-                    catch(error) {
-                        reject(error);
-                    }
+                    const parser = new xml2js.Parser({ trim: true, explicitArray: false, explicitRoot: false });
+                    parser.parseString(body, (error, result) => {
+                        if (!err) {
+                            resolve(result);
+                        } else {
+                            reject(error);
+                        }
+                    });
                 }
             });
         });

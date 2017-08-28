@@ -1,3 +1,8 @@
+/**
+ * @description this is config for sf interface
+ * @author curry.liang
+ */
+
 import release from './release';
 import debug from './development';
 

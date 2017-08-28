@@ -1,6 +1,6 @@
 {
   "name": "xian_sf",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "the interface of sf for nodeJs",
   "main": "lib/index.js",
   "directories": {
@@ -45,6 +45,7 @@
   "dependencies": {
     "moment": "^2.17.1",
     "query-string": "^5.0.0",
-    "request": "^2.79.0"
+    "request": "^2.79.0",
+    "xml2js": "^0.4.19"
   }
 }
