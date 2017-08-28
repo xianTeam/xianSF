@@ -38,14 +38,14 @@ export default class Common {
     createCargos(cargos) {
         let data = '';
         if (cargos.length > 0) {
-        cargos.forEach((item) => {
-            let root = '<Cargo ';
-            for (const littleItem in item) {
-            root = `${root}${littleItem}="${item[littleItem]}" `;
-            }
-            root = root + '></Cargo>';
-            data = data + root;
-        });
+            cargos.forEach((item) => {
+                let root = '<Cargo ';
+                for (const littleItem in item) {
+                    root = `${root}${littleItem}="${item[littleItem]}" `;
+                }
+                root = root + '></Cargo>';
+                data = data + root;
+            });
         }
         return data;
     }
