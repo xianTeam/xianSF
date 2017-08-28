@@ -41,7 +41,7 @@ export default class PushOrder extends Common {
     /** 参数说明
      * @example
         // data = {
-            // orderInfo: {
+            // params: {
             //     orderid: 'TD201708231820101',
             //     express_type: '2',
             //     j_company: '鲜盒子',
@@ -59,13 +59,13 @@ export default class PushOrder extends Common {
             //     d_address: '小霸王学习机',
             //     pay_method: '1',
             //     custid: '5710012139' // 可以不填写或者用自己公司的（月结账号）
-            // }, goodsInfo: {
-            //     name: '苹果', 
-            //     count: '1', 
-            //     unit: '件', 
-            //     amount: '0.0', 
-            //     currency:'CNY' 
-            // }
+            // }, cargos: [{
+                name: '苹果', 
+                count: '1', 
+                unit: '件', 
+                amount: '0.0', 
+                currency:'CNY' 
+            // }]
 
      * }
     */
@@ -84,7 +84,7 @@ export default class PushOrder extends Common {
         }
         const xml = this.buildXML(order);
         const sign = this._getSign(xml, this.options.checkword);
-        return queryString.stringify({ xml, sign });
+        return queryString.stringify({ xml, verifyCode: sign });
     }
     // push order with sf interface
     makeRequest(orderData) {
