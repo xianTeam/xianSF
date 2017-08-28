@@ -108,7 +108,7 @@ export default class PushOrder extends Common {
                     parser.parseString(body, (error, result) => {
                         if (!err) {
                             if (result.Head === 'OK') {
-                                const obj = result.OrderResponse;
+                                const obj = result.Body.OrderResponse.$;
                                 resolve(obj);
                             } else {
                                 const obj = { message: 'ERR' };
