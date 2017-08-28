@@ -1,4 +1,4 @@
-import PushOrder from '../interface/pushOrder';
+import PushOrder from './interface/pushOrder';
 
 export default {
     PushOrder

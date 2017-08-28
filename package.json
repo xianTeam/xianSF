@@ -1,6 +1,6 @@
 {
   "name": "xian_sf",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "the interface of sf for nodeJs",
   "main": "lib/index.js",
   "directories": {
@@ -25,7 +25,7 @@
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/curryTeam/xianSF.git"
   },
   "license": "ISC",
   "devDependencies": {
