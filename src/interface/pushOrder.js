@@ -107,7 +107,15 @@ export default class PushOrder extends Common {
                     const parser = new xml2js.Parser({ trim: true, explicitArray: false, explicitRoot: false });
                     parser.parseString(body, (error, result) => {
                         if (!err) {
-                            resolve(result);
+                            if (result.Head === 'OK') {
+                                const obj = result.OrderResponse.$;
+                                Object.assign(obj, { message: 'OK' });
+                                resolve(obj);
+                            } else {
+                                const obj = {};
+                                Object.assign(obj, { message: 'ERR' });
+                                resolve(obj);
+                            }
                         } else {
                             reject(error);
                         }
