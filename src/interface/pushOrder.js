@@ -1,4 +1,4 @@
-import SF from './common.js';
+import Common from './common';
 import request from 'request';
 import config from '../config';
 
@@ -30,7 +30,7 @@ const queryString = require('query-string');
     </Order>
  */
 
-export default class PushOrder extends SF {
+export default class PushOrder extends Common {
     // super father props
     constructor(props) {
         super(props);
