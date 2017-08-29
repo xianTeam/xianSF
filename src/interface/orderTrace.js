@@ -40,7 +40,7 @@ export default class OrderTrace extends Common {
     getStr(data) {
         let order = '<RouteRequest ';
         for (const item in data) {
-            order = `${order}${item}="${params[item]}" `;
+            order = `${order}${item}="${data[item]}" `;
         }
         order = order + '/>';
         const xml = this.buildNowXml(order);
