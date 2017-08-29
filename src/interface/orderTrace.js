@@ -69,7 +69,7 @@ export default class OrderTrace extends Common {
                     parser.parseString(body, (error, result) => {
                         console.log(result);
                         if (result.Head === 'OK') {
-                            const obj = result.Body.OrderResponse.$;
+                            const obj = result.Body.RouteResponse.$;
                             resolve(obj);
                         } else {
                             const obj = { message: 'ERR' };
