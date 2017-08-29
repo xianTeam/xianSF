@@ -1,6 +1,6 @@
 {
   "name": "xian_sf",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "the interface of sf for nodeJs",
   "main": "lib/index.js",
   "directories": {
@@ -22,7 +22,7 @@
     "sourceMap": false,
     "instrument": false
   },
-  "keywords": [],
+  "keywords": ["顺丰", "nodeJS", "顺丰下单"],
   "repository": {
     "type": "git",
     "url": "https://github.com/curryTeam/xianSF.git"
