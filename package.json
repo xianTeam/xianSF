@@ -22,7 +22,7 @@
     "sourceMap": false,
     "instrument": false
   },
-  "keywords": ["顺丰", "nodeJS", "顺丰下单"],
+  "keywords": ["顺丰", "nodeJS", "顺丰下单", "顺丰接口nodejs版"],
   "repository": {
     "type": "git",
     "url": "https://github.com/curryTeam/xianSF.git"
