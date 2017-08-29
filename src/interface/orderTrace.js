@@ -1,11 +1,3 @@
-/**
- * @description search order route
- * @params tracking_type(订单类型 1: 顺丰运单号 2: 客户订单号 默认为1)
- *         tracking_number(订单号)
- *         method_type(路由查询类别 1: 标准路由查询 2: 定制路由查询)
- * @example
- *  { tracking_type: 1, tracking_number: '444003077898' }
- */
 import xml2js from 'xml2js';
 import request from 'request';
 import Common from './common';
@@ -14,6 +6,14 @@ import Config from '../config';
 const queryString = require('query-string');
 
 export default class OrderTrace extends Common {
+    /**
+     * @description search order route
+     * @params tracking_type(订单类型 1: 顺丰运单号 2: 客户订单号 默认为1)
+     *         tracking_number(订单号)
+     *         method_type(路由查询类别 1: 标准路由查询 2: 定制路由查询)
+     * @example
+     *  { tracking_type: 1, tracking_number: '444003077898' }
+     */
     // super props
     constructor(props) {
         super(props);
@@ -64,15 +64,16 @@ export default class OrderTrace extends Common {
                 if(err) {
                     reject(err);
                 } else {
+                    console.log(body);
                     const parser = new xml2js.Parser({ trim: true, explicitArray: false, explicitRoot: false });
                     parser.parseString(body, (error, result) => {
+                        console.log(result);
                         if (result.Head === 'OK') {
-                            const obj = result.OrderResponse.$;
-                            Object.assign(obj, { message: 'OK' });
+                            const obj = result.Body.OrderResponse.$;
                             resolve(obj);
                         } else {
-                            const obj = {};
-                            Object.assign(obj, { message: 'ERR' });
+                            const obj = { message: 'ERR' };
+                            obj.result = result;
                             resolve(obj);
                         }
                     });
