@@ -84,6 +84,7 @@ export default class PushOrder extends Common {
             order = order + ' />';
         }
         const xml = this.buildXML(order);
+        console.log(this.options);
         const sign = this._getSign(xml, this.options.checkword);
         return queryString.stringify({ xml, verifyCode: sign });
     }
@@ -106,6 +107,7 @@ export default class PushOrder extends Common {
                 } else {
                     const parser = new xml2js.Parser({ trim: true, explicitArray: false, explicitRoot: false });
                     parser.parseString(body, (error, result) => {
+                        console.log(err, result);
                         if (!err) {
                             if (result.Head === 'OK') {
                                 const obj = result.Body.OrderResponse.$;
