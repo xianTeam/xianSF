@@ -71,7 +71,15 @@ export default class OrderTrace extends Common {
                         if (result.Head === 'OK') {
                             const obj = {};
                             obj.mailno = result.Body.RouteResponse.$.mailno;
-                            obj.trace = result.Body.RouteResponse.Route;
+                            const arr = [];
+                            if (result.Body.RouteResponse.Route.length === undefined) {
+                                arr.push(result.Body.RouteResponse.Route.$);
+                            } else {
+                                result.Body.RouteResponse.Route.forEach((item) => {
+                                    arr.push(item.$);
+                                });
+                            }
+                            obj.trace = arr;
                             resolve(obj);
                         } else {
                             const obj = { message: 'ERR' };
