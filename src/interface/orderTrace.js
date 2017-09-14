@@ -44,7 +44,7 @@ export default class OrderTrace extends Common {
         }
         order = order + '/>';
         const xml = this.buildNowXml(order);
-        console.log(xml);
+        // console.log(xml);
         const sign = this._getSign(xml, this.options.checkword);
         return queryString.stringify({ xml, verifyCode: sign });
     }
@@ -65,11 +65,11 @@ export default class OrderTrace extends Common {
                 if(err) {
                     reject(err);
                 } else {
-                    console.log(body);
+                    // console.log(body);
                     const parser = new xml2js.Parser({ trim: true, explicitArray: false, explicitRoot: false });
                     parser.parseString(body, (error, result) => {
-                        console.log(result);
-                        console.log(result.Body.RouteResponse.Route);
+                        // console.log(result);
+                        // console.log(result.Body.RouteResponse.Route);
                         if (result.Head === 'OK') {
                             const obj = {};
                             obj.mailno = result.Body.RouteResponse.$.mailno;
