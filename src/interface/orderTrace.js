@@ -72,6 +72,7 @@ export default class OrderTrace extends Common {
                         // console.log(result.Body.RouteResponse.Route);
                         if (result.Head === 'OK') {
                             const obj = {};
+                            console.log(result);
                             console.log(result.Body);
                             console.log(result.Body.RouteResponse);
                             obj.mailno = result.Body.RouteResponse.$.mailno;
