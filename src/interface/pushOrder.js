@@ -90,6 +90,7 @@ export default class PushOrder extends Common {
     makeRequest(orderData) {
         const url = this.options.url;
         const formData = this.getStr(orderData);
+        console.log(formData);
         return new Promise((resolve, reject) => {
             request({
                 headers: {
@@ -101,11 +102,12 @@ export default class PushOrder extends Common {
                 method: 'POST'
             }, function (err, res, body) {
                 if(err) {
+                    console.log(err);
                     reject(err);
                 } else {
                     const parser = new xml2js.Parser({ trim: true, explicitArray: false, explicitRoot: false });
                     parser.parseString(body, (error, result) => {
-                        // console.log(err, result);
+                        console.log(err, result);
                         if (!err) {
                             if (result.Head === 'OK') {
                                 const obj = result.Body.OrderResponse.$;

@@ -68,7 +68,7 @@ export default class OrderTrace extends Common {
                     // console.log(body);
                     const parser = new xml2js.Parser({ trim: true, explicitArray: false, explicitRoot: false });
                     parser.parseString(body, (error, result) => {
-                        // console.log(result);
+                        console.log(result);
                         // console.log(result.Body.RouteResponse.Route);
                         if (result.Head === 'OK') {
                             const obj = {};
